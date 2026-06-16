@@ -31,6 +31,10 @@ Reference PDFs (ennos install guide, pump catalog, PV sizing notes) are included
 node test-calc.js
 ```
 
+## Repository
+
+https://github.com/Touradam/SolarIrrigation
+
 ## License
 
 SUNROOTS · Tourdam AI Lab

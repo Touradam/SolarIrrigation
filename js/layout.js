@@ -54,7 +54,7 @@ function renderFooter() {
     <footer class="site-footer section-gray">
       <div class="container">
         <p>${COPYRIGHT_HOLDER} · Works offline · Open <code>index.html</code> directly</p>
-        <p><a href="#readme">Data storage &amp; export guide</a> · <a href="assets/playbook/dubreka-sunlight-pump.md">Field playbook</a></p>
+        <p><a href="#readme">Data storage &amp; export guide</a> · <a href="assets/playbook/dubreka-sunlight-pump.md">Field playbook</a> · <a href="https://github.com/Touradam/SolarIrrigation" target="_blank" rel="noopener">GitHub</a></p>
       </div>
     </footer>
   `;
