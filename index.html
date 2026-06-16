@@ -1,0 +1,88 @@
+<!--
+  SunRoots Project Tool — README
+
+  DATA STORAGE
+  - Active project saved in browser LocalStorage (key: sunroots_active_project)
+  - Autosaves 500ms after edits; use Save button for immediate write
+
+  EXPORT / IMPORT
+  - Export JSON: full project state for backup or sharing
+  - Import JSON: replaces active project
+  - Duplicate Project: copies structure, resets GPS/photos/site measurements
+
+  PHOTOS
+  - Store filenames + notes in the app; place image files in assets/photos/
+  - ZIP export includes photos-manifest.txt listing expected files
+
+  RFQ TEMPLATES
+  - Edit in-app on Step 6, or edit assets/templates/rfq-en.md and rfq-fr.md
+  - Embedded copies in js/data.js (RFQ_TEMPLATE_EN / RFQ_TEMPLATE_FR) for offline use
+  - Use {{placeholders}} — regenerated via "Regenerate from template"
+
+  DUBRÉKA BASELINE
+  - assets/seed/dubreka-baseline.json or "Load Dubréka baseline" button
+
+  FIELD PLAYBOOK
+  - assets/playbook/dubreka-sunlight-pump.md — full mission guide
+  - Step 8 Field Ops — PV check, commissioning, calculators, logbooks
+
+  DESIGN: AdamaWebsiteStyle (Midnight Champagne) — vanilla HTML/CSS/JS, no build step
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Irrigation Wizard | SunRoots Project Tool</title>
+  <meta name="description" content="Offline 8-step wizard and field playbook for the SUNROOTS Dubréka 1.5 HP Sunlight Pump solar irrigation system." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#0c0c0f" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="header-mount"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container text-center max-w-4xl reveal-stagger">
+        <span class="section-eyebrow reveal-item">Solar irrigation</span>
+        <h1 class="reveal-item">Duplicate the Dubréka pilot</h1>
+        <p class="lead reveal-item">8-step wizard + field playbook for the 1.5 HP Sunlight Pump — install, size, commission, and maintain. Works offline.</p>
+      </div>
+    </section>
+
+    <section class="wizard-section section-white" id="readme">
+      <div class="container max-w-5xl">
+        <div id="wizard-dashboard"></div>
+
+        <div class="wizard-layout">
+          <nav id="wizard-stepper" class="wizard-stepper" aria-label="Project steps"></nav>
+          <div id="wizard-content" class="wizard-main"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+
+  <input type="file" id="import-file-input" accept=".json,application/json" aria-label="Import project JSON" />
+
+  <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/wizard-state.js"></script>
+  <script src="js/wizard-calc.js"></script>
+  <script src="js/wizard-render.js"></script>
+  <script src="js/wizard-docs.js"></script>
+  <script src="js/playbook-content.js"></script>
+  <script src="js/wizard-field-ops.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

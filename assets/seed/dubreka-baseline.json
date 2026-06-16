@@ -1,0 +1,147 @@
+{
+  "meta": { "name": "Dubréka Pilot (template)", "designFreeze": null },
+  "step1_setup": {
+    "name": "Dubréka Solar Irrigation Pilot",
+    "country": "Guinea",
+    "region": "Dubréka",
+    "client": "Local farming community",
+    "gps": { "site": "9.787, -13.523", "waterSource": "9.788, -13.524", "pvArea": "", "tankArea": "" },
+    "area_ha": 2,
+    "crops": "Vegetables, rice basins",
+    "irrigationMethod": "drip",
+    "volume_m3_day": 20,
+    "successCriteria": "Deliver ≥ 20 m³/day under typical dry-season solar conditions, without batteries (unless optional).",
+    "stakeholders": [
+      { "role": "SUNROOTS HQ", "name": "", "org": "SUNROOTS" },
+      { "role": "SUNROOTS Guinea team", "name": "", "org": "SUNROOTS Guinea" },
+      { "role": "Local installer", "name": "", "org": "" },
+      { "role": "Donor / partner", "name": "", "org": "" }
+    ]
+  },
+  "step2_planning": {
+    "milestones": [
+      { "name": "Site visit", "date": "", "status": "pending" },
+      { "name": "Field data collection", "date": "", "status": "pending" },
+      { "name": "Design freeze", "date": "", "status": "pending" },
+      { "name": "RFQ issued", "date": "", "status": "pending" },
+      { "name": "Procurement", "date": "", "status": "pending" },
+      { "name": "Installation", "date": "", "status": "pending" },
+      { "name": "Commissioning", "date": "", "status": "pending" }
+    ],
+    "assumptions": [
+      "Surface retention basin on permanent stream",
+      "Worst-month PSH ≈ 3.8 h/day (verify PVGIS)",
+      "Static lift 50 m from minimum basin level to tank inlet",
+      "Replication pilot target 20 m³/day; full design 100 m³/day",
+      "No batteries — pump runs during sun hours only"
+    ],
+    "decisions": [
+      "Component-based procurement: pump + PV + local installer",
+      "DN50 HDPE rising main for replication pilot route"
+    ],
+    "risks": [
+      { "risk": "Water availability fluctuation (dry season)", "mitigation": "Measure minimum basin depth; size intake for low flow", "severity": "high" },
+      { "risk": "Silt and sediment at intake", "mitigation": "Settling zone, gravel bed, screen maintenance schedule", "severity": "high" },
+      { "risk": "PV shading (trees, structures)", "mitigation": "Panorama photos; relocate array or trim vegetation", "severity": "medium" },
+      { "risk": "Theft (panels, pump, cables)", "mitigation": "Secure mounting, community watch, controller lockbox", "severity": "medium" },
+      { "risk": "Operator maintenance gaps", "mitigation": "Training plan, spare parts kit, simple O&M checklist", "severity": "medium" }
+    ]
+  },
+  "step3_field": {
+    "siteSolar": {
+      "photos": [
+        { "label": "PV location", "filename": "", "notes": "" },
+        { "label": "Shading panorama", "filename": "", "notes": "" },
+        { "label": "Access roads", "filename": "", "notes": "" }
+      ],
+      "pvArea_m2": 80,
+      "tiltNotes": "Ground mount; verify shading with panorama",
+      "solarNotes": "PSH ~3.8 h/day worst month (verify PVGIS)",
+      "solarScreenshot": ""
+    },
+    "waterSource": {
+      "basin": { "L": 15, "W": 8, "depth": 3, "depthFallback": 5 },
+      "minOpDepth": 1.5,
+      "siltNotes": "Seasonal silt load; plan gravel bed and screen cleaning",
+      "intakePlan": "Coarse screen + settling zone before pump intake"
+    },
+    "hydraulics": {
+      "segments": [
+        { "label": "Source to hill base", "length_m": 30 },
+        { "label": "Slope section", "length_m": 35 },
+        { "label": "Top to tank", "length_m": 15 }
+      ],
+      "totalLength_m": 80,
+      "pipeDiameter_mm": 50,
+      "pipeMaterial": "PE",
+      "hazenC": 140,
+      "fittingsLevel": "med",
+      "staticHead_m": 50,
+      "fittings": { "elbows": 8, "valves": 3 },
+      "drawdown_m": 2,
+      "minorLoss_m": 0
+    },
+    "storage": {
+      "tankType": "Prefab rubber tank",
+      "volume_m3": 20,
+      "autonomyDays": 1,
+      "elevation_m": 20,
+      "outletPressure_bar": ""
+    },
+    "operations": {
+      "t_sun": 5,
+      "operatorSkill": "Community operator — basic mechanical skills",
+      "maintenancePlan": "Weekly screen check; monthly valve exercise; seasonal silt removal",
+      "spareParts": "Float switch, fuses, gland seals, spare screen mesh",
+      "training": "Fill/stop pump, read levels, basic troubleshooting, report to SUNROOTS"
+    }
+  },
+  "step4_validation": { "lockedAt": null, "checks": [], "hasErrors": false },
+  "step5_design": {
+    "scenarioSync": { "autoSync": true },
+    "scenarios": [
+      { "label": "Scenario A (10 m³/day)", "volume_m3_day": 10, "t_sun_h": 5, "results": {} },
+      { "label": "Scenario B (20 m³/day)", "volume_m3_day": 20, "t_sun_h": 5, "results": {} }
+    ],
+    "pump": {
+      "type": "submersible",
+      "maxHead": 70,
+      "ratedPower": 5.5,
+      "nominalFlow": 12,
+      "dryRun": true,
+      "curvePoints": [
+        { "Q": 5, "H": 22 },
+        { "Q": 12, "H": 20 },
+        { "Q": 18, "H": 15 }
+      ]
+    },
+    "designParams": { "pumpCtrl": 0.45, "array": 0.75, "psh": 3.8, "drawdown": 2, "minorLoss": 0 },
+    "bom": [
+      { "item": "Solar submersible / surface pump", "qty": 1, "unit": "set", "notes": "Sized for TDH @ design flow", "editable": true },
+      { "item": "Solar pump controller (MPPT / VFD)", "qty": 1, "unit": "set", "notes": "Dry-run protection included", "editable": true },
+      { "item": "PV modules", "qty": "", "unit": "kWp", "notes": "Ground-mount array", "editable": true },
+      { "item": "Mounting structure", "qty": 1, "unit": "set", "notes": "Wind-rated for site", "editable": true },
+      { "item": "HDPE rising main", "qty": "", "unit": "m", "notes": "PN10/12.5 per static head", "editable": true },
+      { "item": "Storage tank (prefab)", "qty": 1, "unit": "m³", "notes": "Rubber or steel tank", "editable": true },
+      { "item": "Intake screen / strainer", "qty": 1, "unit": "set", "notes": "Surface water sediment handling", "editable": true },
+      { "item": "Submersible / power cable", "qty": "", "unit": "m", "notes": "Size for voltage drop", "editable": true },
+      { "item": "Tank float switch", "qty": 1, "unit": "pc", "notes": "Auto fill control", "editable": true },
+      { "item": "Dry-run probe", "qty": 1, "unit": "pc", "notes": "Low water protection", "editable": true }
+    ]
+  },
+  "step6_rfq": { "approach": "component_based", "rfqEn_md": "", "rfqFr_md": "" },
+  "step7_report": {
+    "commissioningClause": "",
+    "notes": "Replication pilot based on Dubréka surface-water → hilltop tank concept."
+  },
+  "step8_fieldOps": {
+    "pvPanel": { "pmax_W": 550, "voc_V": 49.5, "vmp_V": 41, "isc_A": 13.8, "imp_A": 13.4 },
+    "pvTotals": { "vocTotal_V": "148.5", "vmpTotal_V": "123.0", "pArray_W": "1650", "passVoc": true },
+    "wireCalc": { "cableLength_m": 15, "current_A": 17, "dropPct": 3, "systemVoltage_V": 123, "area_mm2": "2.32", "recommended_mm2": "4" },
+    "commissioning": { "date": "", "weather": "", "startTime": "", "endTime": "", "runtime_min": "", "method": "tank_rise", "volumeDelivered_m3": "", "flow_m3h": "", "dailyEstimate_m3": "", "result": "" },
+    "omChecklist": { "daily": {}, "weekly": {}, "monthly": {}, "quarterly": {} },
+    "dailyLogs": [],
+    "maintenanceLogs": [],
+    "incidentLogs": []
+  }
+}
